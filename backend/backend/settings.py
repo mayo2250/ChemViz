@@ -132,16 +132,16 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # 1. ALLOWED ORIGINS: Who can talk to this backend?
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",                 # Local React
-    "https://chem-viz-tau.vercel.app/",            # Your Vercel Frontend (REPLACE IF DIFFERENT)
+    "https://chem-viz-tau.vercel.app",            # Your Vercel Frontend (REPLACE IF DIFFERENT)
 ]
 
 # 2. TRUSTED ORIGINS: Required for POST requests (Login/Upload) to work
 CSRF_TRUSTED_ORIGINS = [
-    "https://chem-viz-tau.vercel.app/",            # Frontend URL
-    "https://chemviz-backend-nqg2.onrender.com/",  # Backend URL (REPLACE IF DIFFERENT)
+    "https://chem-viz-tau.vercel.app",            # Frontend URL
+    "https://chemviz-backend-nqg2.onrender.com",  # Backend URL (REPLACE IF DIFFERENT)
 ]
 
-CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_CREDENTIALS = True   
 
 
 # --- REST FRAMEWORK & JWT ---

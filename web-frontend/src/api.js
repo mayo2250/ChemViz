@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://chemviz-backend-nqg2.onrender.com//api';
+const API_URL = 'https://chemviz-backend-nqg2.onrender.com/api';
 
 // Create an axios instance to handle headers automatically
 const api = axios.create({
