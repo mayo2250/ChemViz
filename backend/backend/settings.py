@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 from pathlib import Path
 import os
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,10 +22,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-&3fag3nat!jdlo83vois+821bfl7&fds3=k6fwdaq%civglodl'
+# Use environment variable on Render, fall back to default locally
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-&3fag3nat!jdlo83vois+821bfl7&fds3=k6fwdaq%civglodl')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# On Render, set DEBUG=False in environment variables
+DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = ['*']
 
@@ -41,14 +44,12 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'analytics',
-
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
-
+    'corsheaders.middleware.CorsMiddleware', # Keep at the top
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', # Required for Render
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -126,9 +127,24 @@ STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-CORS_ALLOW_ALL_ORIGINS = True
+# --- CORS & CSRF CONFIGURATION (CRITICAL FOR DEPLOYMENT) ---
 
-from datetime import timedelta
+# 1. ALLOWED ORIGINS: Who can talk to this backend?
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",                 # Local React
+    "https://chem-viz-tau.vercel.app/",            # Your Vercel Frontend (REPLACE IF DIFFERENT)
+]
+
+# 2. TRUSTED ORIGINS: Required for POST requests (Login/Upload) to work
+CSRF_TRUSTED_ORIGINS = [
+    "https://chem-viz-tau.vercel.app/",            # Frontend URL
+    "https://chemviz-backend-nqg2.onrender.com/",  # Backend URL (REPLACE IF DIFFERENT)
+]
+
+CORS_ALLOW_CREDENTIALS = True
+
+
+# --- REST FRAMEWORK & JWT ---
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
