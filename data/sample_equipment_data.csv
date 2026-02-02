@@ -1,0 +1,21 @@
+Equipment Name,Type,Flowrate,Pressure,Temperature
+Pump A,Pump,12.5,5.2,350
+Pump B,Pump,11.8,5.0,345
+Valve A,Valve,8.2,3.1,290
+Valve B,Valve,8.5,3.3,295
+Reactor A,Reactor,15.0,6.8,420
+Reactor B,Reactor,14.6,6.5,415
+Heat Exchanger A,HeatExchanger,10.2,4.4,330
+Heat Exchanger B,HeatExchanger,10.5,4.6,335
+Compressor A,Compressor,18.0,7.5,460
+Compressor B,Compressor,17.6,7.2,455
+Tank A,Tank,5.0,2.0,280
+Tank B,Tank,5.2,2.1,282
+Filter A,Filter,6.8,2.5,300
+Filter B,Filter,7.0,2.6,305
+Mixer A,Mixer,9.5,3.8,315
+Mixer B,Mixer,9.7,3.9,318
+Separator A,Separator,13.2,5.8,360
+Separator B,Separator,13.0,5.6,358
+Boiler A,Boiler,16.5,6.9,450
+Boiler B,Boiler,16.2,6.7,445
