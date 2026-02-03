@@ -12,7 +12,7 @@ matplotlib.use('Qt5Agg')
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 
-# --- Backend Config ---
+# --- Backend Config w
 BASE_URL = "http://127.0.0.1:8000/api"
 TOKEN_URL = "http://127.0.0.1:8000/api/token/"
 

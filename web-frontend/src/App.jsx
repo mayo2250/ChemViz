@@ -6,25 +6,25 @@ import StatsCard from './components/StatsCard';
 import UploadZone from './components/UploadZone';
 
 function App() {
-  // --- UI STATE ---
+  // --- UI STATE
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const [showHistory, setShowHistory] = useState(false);
   
-  // --- DATA STATE ---
+  // --- DATA STATE
   const [chartData, setChartData] = useState(null);
   const [historyData, setHistoryData] = useState([]);
   const [file, setFile] = useState(null); 
   const [loading, setLoading] = useState(false);
   const [stats, setStats] = useState({ records: 0, flow: 0, pressure: 0, temp: 0 });
 
-  // --- AUTHENTICATION STATE ---
+  // --- AUTHENTICATION STATE
   const [token, setToken] = useState(localStorage.getItem('access_token'));
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [authError, setAuthError] = useState('');
 
-  // --- HANDLERS ---
+  // --- HANDLERS
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
@@ -153,7 +153,7 @@ function App() {
             </div>
           </div>
 
-          {/* 🟢 NEW UPLOAD & ANALYZE SECTION (SIDE-BY-SIDE MODULAR) */}
+          {/* 🟢 NEW UPLOAD & ANALYZE SECTION  */}
           <div className="mb-10 flex flex-col lg:flex-row gap-6 h-auto lg:h-48">
             
             {/* 1. Drop Zone (Takes remaining space) */}
@@ -165,7 +165,7 @@ function App() {
                 />
             </div>
 
-            {/* 2. The New Control Panel Button (Fixed width on large screens) */}
+            {/* 2. The New Control Panel Button  */}
             <button
                 onClick={handleUploadClick}
                 disabled={!file || loading}
@@ -179,7 +179,7 @@ function App() {
                     }
                 `}
             >
-                {/* REMOVED THE GREEN INDICATOR DOT HERE */}
+                
 
                 {loading ? (
                     <div className="flex flex-col items-center gap-2">
@@ -215,7 +215,7 @@ function App() {
 
         </main>
 
-        {/* HISTORY MODAL (UNCHANGED) */}
+        {/* HISTORY MODAL */}
         {showHistory && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
             <div className="w-full max-w-3xl bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 flex flex-col max-h-[90vh]">

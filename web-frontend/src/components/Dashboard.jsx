@@ -11,7 +11,6 @@ import {
   Legend
 } from "chart.js";
 
-// Register Chart.js components
 ChartJS.register(CategoryScale, LinearScale, BarElement, ArcElement, Title, Tooltip, Legend);
 
 const Dashboard = ({ distribution, isDarkMode }) => {
@@ -26,11 +25,9 @@ const Dashboard = ({ distribution, isDarkMode }) => {
     );
   }
 
-  // 2. Prepare Data
   const labels = Object.keys(distribution);
   const values = Object.values(distribution);
 
-  // Colors for the Pie Chart
   const pieColors = [
     'rgba(255, 99, 132, 0.8)',
     'rgba(54, 162, 235, 0.8)',
@@ -66,7 +63,6 @@ const Dashboard = ({ distribution, isDarkMode }) => {
     ],
   };
 
-  // 3. Shared Options
   const commonOptions = {
     responsive: true,
     maintainAspectRatio: false,
@@ -94,10 +90,9 @@ const Dashboard = ({ distribution, isDarkMode }) => {
     }
   };
 
-  // Specific Options for Pie (Enable Legend, Disable Scales)
   const pieOptions = {
     ...commonOptions,
-    scales: {}, // Pie charts don't use X/Y axes
+    scales: {}, 
     plugins: {
       ...commonOptions.plugins,
       legend: {

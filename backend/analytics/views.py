@@ -8,7 +8,7 @@ from reportlab.lib.pagesizes import A4
 from reportlab.pdfgen import canvas
 from django.http import HttpResponse
 
-# backend/analytics/views.py (Partial Update)
+
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
@@ -39,8 +39,7 @@ def upload_csv(request):
     avg_pressure = df["Pressure"].mean()
     avg_temp = df["Temperature"].mean()
 
-    # 3. Calculate Distribution (NEW LOGIC)
-    # We look for 'EquipmentClass' or 'EquipmentType' or 'Equipment'
+    # 3. Calculate Distribution 
     distribution = {}
     eq_col = None
     for col in ['EquipmentClass', 'EquipmentType', 'Equipment', 'Type']:
